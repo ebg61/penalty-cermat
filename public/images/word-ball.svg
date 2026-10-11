@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="Football">
+  <defs>
+    <radialGradient id="ball" cx="32%" cy="22%" r="78%"><stop offset="0" stop-color="#fff"/><stop offset=".66" stop-color="#f6f9fb"/><stop offset="1" stop-color="#c9d2db"/></radialGradient>
+  </defs>
+  <circle cx="100" cy="100" r="96" fill="url(#ball)" stroke="#fff" stroke-width="5"/>
+  <g fill="#14263a" stroke="#0c1927" stroke-width="2">
+    <path d="M100 17 117 29 111 49 89 49 83 29Z"/>
+    <path d="m40 53 20-3 12 18-13 17-20-8Z"/>
+    <path d="m160 53 20 4 1 20-20 8-13-17 12-18Z"/>
+    <path d="m44 137 19-10 17 15-6 21-21 3-12-17Z"/>
+    <path d="m156 137 19 9 6 20-13 17-21-3-6-21 17-15Z"/>
+    <path d="m100 75 24 17-9 28H85l-9-28Z"/>
+  </g>
+  <g fill="none" stroke="#7c8994" stroke-opacity=".55" stroke-width="2">
+    <path d="M100 49 100 75M72 68l19 14M128 68l-19 14M80 142l12-22M120 142l-12-22"/>
+  </g>
+</svg>

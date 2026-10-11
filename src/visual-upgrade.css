@@ -6,7 +6,7 @@
   isolation: isolate;
   background:
     linear-gradient(180deg, rgb(2 18 48 / 18%) 0%, rgb(2 18 48 / 30%) 38%, rgb(2 33 25 / 70%) 100%),
-    url('/images/stadium-night.png') center / cover no-repeat,
+    url('/images/stadium-night.jpg') center / cover no-repeat,
     #06316d;
 }
 
@@ -34,7 +34,7 @@
 .panel {
   background:
     linear-gradient(180deg, rgb(1 23 69 / 28%), rgb(2 51 31 / 72%)),
-    url('/images/stadium-night.png') center / cover no-repeat,
+    url('/images/stadium-night.jpg') center / cover no-repeat,
     #06316d;
 }
 
@@ -42,6 +42,28 @@
   border-color: rgb(163 224 255 / 88%);
   background: linear-gradient(120deg, rgb(8 28 71 / 96%), rgb(13 87 153 / 90%));
   box-shadow: 0 7px 20px rgb(0 12 40 / 46%), inset 0 1px rgb(255 255 255 / 20%);
+}
+
+.tournament-banner {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 14px 7px -8px;
+  color: #f7fcff;
+  font: 700 11px/1 Oswald, sans-serif;
+  letter-spacing: 1.1px;
+  text-shadow: 0 2px 4px #03142e;
+}
+
+.tournament-banner b {
+  padding: 5px 8px;
+  border: 1px solid rgb(222 248 134 / 65%);
+  border-radius: 99px;
+  background: rgb(12 67 46 / 74%);
+  color: #dff98d;
+  font-size: 10px;
 }
 
 .stadium {
@@ -96,6 +118,82 @@
   transform: translateX(36%) rotate(20deg) scale(1.05);
 }
 
+.penalty-runup {
+  position: relative;
+  z-index: 2;
+  height: 166px;
+  margin: 7px auto 0;
+  overflow: visible;
+}
+
+.striker {
+  position: absolute;
+  z-index: 1;
+  bottom: -13px;
+  left: -19px;
+  width: min(53vw, 232px);
+  opacity: 0;
+  pointer-events: none;
+  filter: drop-shadow(0 12px 9px rgb(0 8 20 / 68%));
+  transform: translateX(-34px) scale(.93);
+}
+
+.striker.kicking {
+  opacity: 1;
+  animation: striker-kick .82s cubic-bezier(.2, .7, .25, 1) both;
+}
+
+.word-ball {
+  position: absolute;
+  z-index: 2;
+  right: 18%;
+  bottom: 28px;
+  display: grid;
+  place-items: center;
+  width: clamp(96px, 29vw, 124px);
+  aspect-ratio: 1;
+  padding: 15px;
+  overflow: hidden;
+  border: 3px solid #f7fcff;
+  border-radius: 50%;
+  background: url('/images/word-ball.svg') center / cover no-repeat, #f8fbfd;
+  box-shadow: 0 8px 16px rgb(0 8 25 / 55%), inset 0 0 0 5px rgb(255 255 255 / 20%);
+}
+
+.word-ball::after {
+  content: '';
+  position: absolute;
+  inset: 7px;
+  border-radius: inherit;
+  background: radial-gradient(circle at 32% 22%, rgb(255 255 255 / 90%), transparent 19%);
+  pointer-events: none;
+}
+
+.word-ball span {
+  position: relative;
+  z-index: 1;
+  max-width: calc(100% - 4px);
+  padding: 4px 6px;
+  border: 1px solid rgb(8 32 61 / 18%);
+  border-radius: 10px;
+  background: rgb(250 253 255 / 94%);
+  box-shadow: 0 2px 5px rgb(0 15 39 / 18%);
+  color: #092045;
+  font: 900 clamp(11px, 3.8vw, 16px)/.96 Oswald, sans-serif;
+  letter-spacing: .1px;
+  overflow-wrap: anywhere;
+  text-align: center;
+  text-shadow: 0 1px rgb(255 255 255 / 82%);
+}
+
+.word-ball.shot {
+  animation: word-shot .98s cubic-bezier(.15, .68, .28, 1) forwards;
+}
+
+.word-ball.save-shot {
+  animation-name: word-save;
+}
+
 .word-card,
 .result::after {
   box-shadow: 0 8px 22px rgb(0 13 37 / 35%), 0 0 0 2px rgb(212 236 255 / 82%);
@@ -109,8 +207,27 @@
   box-shadow: 0 5px 0 #183b68, 0 10px 20px rgb(0 13 38 / 35%), inset 0 1px rgb(255 255 255 / 30%);
 }
 
+@keyframes striker-kick {
+  0% { opacity: 0; transform: translateX(-44px) scale(.84); }
+  32% { opacity: 1; transform: translateX(0) scale(1); }
+  100% { opacity: 1; transform: translateX(15px) scale(1.02); }
+}
+
+@keyframes word-shot {
+  0% { transform: translate(0, 0) scale(1) rotate(0deg); }
+  100% { transform: translate(var(--shot-x), -270px) scale(.36) rotate(540deg); }
+}
+
+@keyframes word-save {
+  0% { transform: translate(0, 0) scale(1) rotate(0deg); }
+  100% { transform: translate(calc(var(--shot-x) + 84px), -185px) scale(.5) rotate(360deg); }
+}
+
 @media (max-width: 380px) {
   .stadium { padding-top: 46px; }
   .keeper { width: 152px; top: -4px; }
   .target { min-height: 66px; }
+  .penalty-runup { height: 143px; }
+  .striker { width: 194px; left: -21px; }
+  .word-ball { bottom: 22px; right: 16%; }
 }
