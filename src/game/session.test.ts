@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest'
 import { WORDS, assertLockedDataset } from '../data/words'
 import { WORD_CLASSES } from '../data/wordClasses'
 import { MAX_FAILED_ATTEMPTS, createAttempt, nextRematchWords, reviewWords, selectRound } from './session'
+import { TOURNAMENT_START_POINTS, updateTournamentPoints } from './tournament'
 
 describe('locked dataset', () => {
   it('contains exactly the approved category counts', () => {
@@ -31,5 +32,10 @@ describe('Penalty game flow', () => {
   it('records correct category and response timing on each answer', () => {
     const word = WORDS[0]
     expect(createAttempt(word, word.category, 740, 100)).toMatchObject({ word: word.word, correct: true, responseTimeMs: 740, at: 100 })
+  })
+
+  it('awards and protects tournament points', () => {
+    expect(updateTournamentPoints(TOURNAMENT_START_POINTS, true)).toBe(13)
+    expect(updateTournamentPoints(1, false)).toBe(0)
   })
 })

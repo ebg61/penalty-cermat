@@ -6,7 +6,7 @@
   isolation: isolate;
   background:
     linear-gradient(180deg, rgb(2 18 48 / 18%) 0%, rgb(2 18 48 / 30%) 38%, rgb(2 33 25 / 70%) 100%),
-    url('/images/stadium-night.jpg') center / cover no-repeat,
+    url('/images/stadium-lowpoly.jpg') center / cover no-repeat,
     #06316d;
 }
 
@@ -26,6 +26,41 @@
   backdrop-filter: blur(3px);
 }
 
+.tournament-path {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5px;
+  max-width: 315px;
+  margin: 0 auto 10px;
+}
+
+.tournament-path span {
+  display: grid;
+  gap: 3px;
+  color: #eaf7ff;
+  font: 700 11px/1 Oswald, sans-serif;
+  letter-spacing: .3px;
+}
+
+.tournament-path b {
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  margin: auto;
+  border: 1px solid #c9fa76;
+  border-radius: 50%;
+  background: #176c42;
+  box-shadow: 0 3px 6px rgb(0 12 28 / 42%);
+  color: #fff;
+}
+
+.points-rule {
+  margin: 0 0 14px !important;
+  color: #dff98d !important;
+  font-size: 12px !important;
+}
+
 .hero-ball {
   filter: drop-shadow(0 10px 12px rgb(0 10 30 / 65%));
 }
@@ -34,7 +69,7 @@
 .panel {
   background:
     linear-gradient(180deg, rgb(1 23 69 / 28%), rgb(2 51 31 / 72%)),
-    url('/images/stadium-night.jpg') center / cover no-repeat,
+    url('/images/stadium-lowpoly.jpg') center / cover no-repeat,
     #06316d;
 }
 

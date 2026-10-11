@@ -9,7 +9,7 @@ export function CategoryGoal({ feedback, word, onChoose }: Props) {
   const shotStyle = { '--shot-x': `${(selectedIndex % 5 - 2) * 72}px` } as React.CSSProperties
 
   return <section className="stadium">
-    <img className={'keeper ' + (feedback ? feedback.correct ? 'miss' : 'save' : '')} src="/images/goalkeeper-ready-mobile.png" alt="" aria-hidden="true" />
+    <img className={'keeper ' + (feedback ? feedback.correct ? 'miss' : 'save' : '')} src="/images/goalkeeper-lowpoly.png" alt="" aria-hidden="true" />
     <div className="goal" aria-label="Branka s deseti částmi">
       {WORD_CLASSES.map((category, index) => {
         const state = feedback && (category === feedback.answer ? 'right' : feedback.selected === category ? 'wrong' : '')
@@ -19,7 +19,7 @@ export function CategoryGoal({ feedback, word, onChoose }: Props) {
       })}
     </div>
     <div className="penalty-runup" aria-label={`Slovo k zařazení: ${word}`}>
-      <img className={'striker ' + (feedback ? 'kicking' : '')} src="/images/striker-kick-mobile.png" alt="" aria-hidden="true" />
+      <img className={'striker ' + (feedback ? 'kicking' : '')} src="/images/striker-lowpoly.png" alt="" aria-hidden="true" />
       <div className={'word-ball ' + (feedback ? `shot ${feedback.correct ? 'goal-shot' : 'save-shot'}` : '')} style={shotStyle}>
         <span>{word}</span>
       </div>
