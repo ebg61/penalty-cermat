@@ -6,7 +6,7 @@ const COLORS = ['#f1b337','#ee7058','#b272dd','#398ccc','#19a681','#f1784d','#4a
 
 export function CategoryGoal({ feedback, onChoose }: Props) {
   return <section className="stadium">
-    <div className={'keeper ' + (feedback ? feedback.correct ? 'miss' : 'save' : '')}>🧤</div>
+    <img className={'keeper ' + (feedback ? feedback.correct ? 'miss' : 'save' : '')} src="/images/goalkeeper-ready.png" alt="" aria-hidden="true" />
     <div className="goal" aria-label="Branka s deseti částmi">
       {WORD_CLASSES.map((category, index) => {
         const state = feedback && (category === feedback.answer ? 'right' : feedback.selected === category ? 'wrong' : '')
